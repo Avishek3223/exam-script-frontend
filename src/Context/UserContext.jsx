@@ -26,7 +26,7 @@ export const UserProvider = ({ children }) => {
             if (password !== confirmPassword) {
                 throw new Error("Passwords do not match");
             }
-            await axios.post('http://localhost:3223/api/users', {
+            await axios.post('https://exam-script-backend-1.onrender.com/api/users', {
                 email: email,
                 password: password,
                 name: username,
@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
     const loginUser = async (formData) => {
         try {
             const { email, password } = formData;
-            const response = await axios.get(`http://localhost:3223/api/users/${email}`);
+            const response = await axios.get(`https://exam-script-backend-1.onrender.com/api/users/${email}`);
             if (response.status === 200 && response.data.password === password) {
                 setIsLoggedIn(true);
                 localStorage.setItem('email', email);
@@ -71,7 +71,7 @@ export const UserProvider = ({ children }) => {
 
     const getAllCourses = async () => {
         try {
-            const response = await axios.get('http://localhost:3223/api/course');
+            const response = await axios.get('https://exam-script-backend-1.onrender.com/api/course');
             setAllCourses(response.data)
         } catch (error) {
             console.error('Error fetching courses:', error);
@@ -81,7 +81,7 @@ export const UserProvider = ({ children }) => {
 
     const getEvaluators = async () => {
         try {
-            const response = await axios.get('http://localhost:3223/api/evaluator');
+            const response = await axios.get('https://exam-script-backend-1.onrender.com/api/evaluator');
             setEvaluators(response.data)
         } catch (error) {
             console.error('Error fetching courses:', error);
@@ -91,7 +91,7 @@ export const UserProvider = ({ children }) => {
 
     const getScripts = async () => {
         try {
-            const response = await axios.get('http://localhost:3223/api/studentScripts');
+            const response = await axios.get('https://exam-script-backend-1.onrender.com/api/studentScripts');
             setScripts(response.data);
         } catch (error) {
             console.error('Error fetching scripts:', error);

@@ -83,7 +83,7 @@ function Home() {
   
     try {
       // Submit the form data to your Express backend using axios
-      const response = await axios.post('http://localhost:3223/api/studentScripts', formData, {
+      const response = await axios.post('https://exam-script-backend-1.onrender.com/api/studentScripts', formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set content type to multipart/form-data
         },
@@ -122,6 +122,7 @@ function Home() {
       )?.subjects || [];
       setSelectedSubject(subjects);
     }
+    // eslint-disable-next-line 
   }, [selectedBranch, selectedSemester]);
 
   const subjects = allCourses.find(course =>

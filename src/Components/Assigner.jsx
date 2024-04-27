@@ -7,16 +7,8 @@ const Assigner = () => {
   const { scripts, evaluators, setIsLoggedIn } = useContext(UserContext);
   console.log(scripts);
   const uncheckedScripts = scripts.filter(script => script.status === 'unchecked')
-  const [searchQuery, setSearchQuery] = useState('');
+  // eslint-disable-next-line
   const [selectedEvaluatorIds, setSelectedEvaluatorIds] = useState(Array(scripts.length).fill(''));
-
-  const handleSearchInputChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handlePageChange = (pageNumber) => {
-
-  };
 
   const handleEvaluatorChange = (e, index) => {
     const selectedId = e.target.value;
@@ -35,7 +27,7 @@ const Assigner = () => {
       console.log(scriptId)
       console.log(selectedEvaluatorId)
       // Make an HTTP request to update the script with the selected evaluator ID
-      await axios.put(`http://localhost:3223/api/studentScripts/${scriptId}`, { evaluatorId: selectedEvaluatorId });
+      await axios.put(`https://exam-script-backend-1.onrender.com/api/studentScripts/${scriptId}`, { evaluatorId: selectedEvaluatorId });
 
       console.log('Script updated successfully');
     } catch (error) {

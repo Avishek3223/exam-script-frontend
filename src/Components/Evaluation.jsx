@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios'; // Import Axios
-import UserContext, { UserProvider } from '../Context/UserContext';
+import UserContext from '../Context/UserContext';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -10,6 +10,7 @@ const Evaluation = () => {
     const { scripts } = useContext(UserContext);
     const EvaluatorId = localStorage.getItem('evaluatorId');
     const scriptWithEvaluatorId = scripts.find(script => script.evaluatorId === EvaluatorId);
+    // eslint-disable-next-line 
     const scriptId = scriptWithEvaluatorId ? scriptWithEvaluatorId._id : null;
     const location = useLocation();
     const [numPages, setNumPages] = useState(null);
@@ -80,6 +81,7 @@ const Evaluation = () => {
     };
 
     const handleInputChange = (event, page, question) => {
+        // eslint-disable-next-line 
         const { name, value } = event.target;
         setMarks(prevMarks => ({
             ...prevMarks,
@@ -95,7 +97,7 @@ const Evaluation = () => {
         console.log(evaId)
         try {
 
-            await axios.put(`http://localhost:3223/api/studentScripts/${script}`, {evaluatorId :evaId, marks, status: 'checked' });
+            await axios.put(`https://exam-script-backend-1.onrender.com/api/studentScripts/${script}`, {evaluatorId :evaId, marks, status: 'checked' });
             alert('Marks uploaded successfully');
         } catch (error) {
             console.error('Error updating marks or setting status:', error);
