@@ -1,16 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import UserContext from '../Context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 const Evaluator = () => {
   const { scripts, logoutUser, evaluators } = useContext(UserContext);
   const EvaluatorId = localStorage.getItem('evaluatorId');
+  // eslint-disable-next-line
   const evaluatorIdRetrive = evaluators.filter(evaluator => evaluator.evalutorId === EvaluatorId);
   const scriptWithEvaluatorId = scripts.filter(script => script.evaluatorId === EvaluatorId);
   const count = scriptWithEvaluatorId.length;
   const checked = scriptWithEvaluatorId.filter(script => script.status === 'checked').length;
   const unchecked = count - checked;
-  const navigate = useNavigate(); // Initialize navigate hook
+  const navigate = useNavigate(); 
 
   const handleViewClick = (script, evaId) => {
     navigate(`/evaluation?pdfUrl=${script.file.data}&scriptId=${script._id}&evaluatorId=${evaId}`);
