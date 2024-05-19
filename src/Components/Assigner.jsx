@@ -27,7 +27,7 @@ const Assigner = () => {
       console.log(scriptId)
       console.log(selectedEvaluatorId)
       // Make an HTTP request to update the script with the selected evaluator ID
-      await axios.put(`https://exam-script-backend-1.onrender.com/api/studentScripts/${scriptId}`, { evaluatorId: selectedEvaluatorId });
+      await axios.put(`https://exam-script-backend-1.onrender.com/api/studentScripts/${scriptId}`, { evaluatorId: selectedEvaluatorId,status:'unchecked' });
 
       console.log('Script updated successfully');
     } catch (error) {
