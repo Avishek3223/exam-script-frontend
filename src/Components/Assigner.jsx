@@ -32,6 +32,8 @@ const Assigner = () => {
       console.log('Script updated successfully');
     } catch (error) {
       console.error('Error updating script:', error);
+    } finally {
+      window.location.reload();
     }
   };
 
