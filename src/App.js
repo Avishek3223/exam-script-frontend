@@ -46,9 +46,9 @@ function AppContent() {
       <Routes>
         {isLoggedIn ? (
           <>
-            {'userType' === 'assigner' ? (
+            {userType === 'assigner' ? (
               <Route path="/" element={<Assigner />} />
-            ) : true ? (
+            ) : userType === 'evaluator' ? (
               <>
                 <Route path="/" element={<Evaluator />} />
                 <Route path="/evaluation" element={<Evaluation />} />
