@@ -8,7 +8,14 @@ import { Routes, Route } from 'react-router-dom'; // Import necessary components
 import Evaluation from './Components/Evaluation';
 
 function AppContent() {
-  const { isLoggedIn, registerUser, loginUser, logoutUser, setIsLoggedIn, userType } = useContext(UserContext);
+  const {
+    isLoggedIn,
+    registerUser,
+    loginUser,
+    logoutUser,
+    setIsLoggedIn,
+    userType,
+  } = useContext(UserContext);
   const [isRegister, setIsRegister] = useState(false);
 
   useEffect(() => {
@@ -30,7 +37,7 @@ function AppContent() {
   };
 
   const toggleForm = () => {
-    setIsRegister(prevIsRegister => !prevIsRegister);
+    setIsRegister((prevIsRegister) => !prevIsRegister);
   };
 
   // Render routes instead of directly rendering components
@@ -51,7 +58,16 @@ function AppContent() {
             )}
           </>
         ) : (
-          <Route path="/" element={<AuthForm onSubmit={handleAuth} isRegister={isRegister} onToggleForm={toggleForm} />} />
+          <Route
+            path="/"
+            element={
+              <AuthForm
+                onSubmit={handleAuth}
+                isRegister={isRegister}
+                onToggleForm={toggleForm}
+              />
+            }
+          />
         )}
       </Routes>
     </div>
